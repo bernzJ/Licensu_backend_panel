@@ -1,0 +1,129 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/droppy.css" rel="stylesheet" type="text/css">    
+    <link href="bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <a href="#" id="menu-action">
+            <i class="fa fa-bars"></i>
+            <span>Close</span>
+        </a>
+        <div class="logo">
+            Simple Admin
+        </div>
+    </div>
+    <div class="sidebar">
+    <ul>
+        <%
+        
+        sidebarIDS.forEach((program) => {
+            %>
+            <li><a href="/?pid=<%= program.id %>" class="<%= (program.id == selectedID) ? 'selected' : ''; %>"><i class="fa fa-desktop"></i><span><%= program.name %></span></a></li>
+            <%
+        })
+        %>
+    </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="main">
+    <div class="hipsum">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="alert alert-danger" style="display:none;">
+                        <p class="ww" style="word-wrap:break-word;word-break:break-word;"></p>
+                    </div>
+                    <h1>Create Licenses<a class="anchorjs-link"><span class="anchorjs-icon"></span></a></h1>
+                    <p>Create licenses in batch or single.</p>
+                    <article class="droppy-art">
+                        <dl class="dropy">
+                        <dt class="dropy__title"><span class="days_plan" data-dplan="">License Type</span></dt>
+                        <dd class="dropy__content">
+                            <ul>
+                                <li><a class="dropy__header">License Type</a></li>
+                                <li><a data-dplan="30">30 Days</a></li>
+                                <li><a data-dplan="90">90 Days</a></li>
+                                <li><a data-dplan="180">180 Days</a></li>
+                            </ul>
+                        </dd>
+                            <input type="hidden" name="first">
+                        </dl>
+                    </article>
+                    <article class="droppy-art">
+                        <dl class="dropy">
+                        <dt class="dropy__title"><span class="ac_type" data-actype="">Access Type</span></dt>
+                        <dd class="dropy__content">
+                            <ul class="mutliselect">
+                                <li><a class="dropy__header">Access Type</a></li>
+                                
+                                 <input type="hidden" id="pluginlistforupdatelicense" value="">
+                            </ul>
+                        </dd>
+                            <input type="hidden" name="first">
+                        </dl>
+                    </article>
+                    <article class="droppy-art">
+                        <dl class="dropy">
+                        <dt class="dropy__title"><span class="ip_restriction" data-IPlock="">Maximum HWIDs</span></dt>
+                        <dd class="dropy__content">
+                            <ul>
+                                <li><a class="dropy__header">Maximum HWIDs</a></li>
+                                <li><a data-IPlock="3:1">3 different HWID and 1 connection at time.</a></li>
+                                <li><a data-IPlock="3:5">3 different HWID and 5 connection at time.</a></li>
+                                <li><a data-IPlock="-1:-1">Unlimited</a></li>
+                            </ul>
+                        </dd>
+                            <input type="hidden" name="first">
+                        </dl>
+                    </article>
+                    <br>
+                    <p><a class="btn btn-primary create_license" href="#" role="button">Create License</a></p>
+                </div>
+                <div class="col-lg-6">
+                    <h1>Product Settings<a class="anchorjs-link"><span class="anchorjs-icon"></span></a></h1>
+                    <p>Set file MD5, product version and update route.</p>
+                    <input type="text" class="md5 form-control" style="width:40%;" placeholder="Latest file's MD5">
+                    <br>
+                    <input type="text" class="appversion form-control" style="width:40%;" placeholder="Latest program version">
+                    <br>
+                    <input type="text" class="updatepath form-control" style="width:40%;float:left;" placeholder="Latest file's update">
+                    <a href="#" style="margin-left:1rem;" class="btn btn-primary uploadfile">Upload</a>       
+                    <a href="#" style="margin-left:1rem;" class="btn btn-primary updateappinfo">Update</a>             
+                </div>
+            </div>
+        </div>
+        <p>Users Information.</p>
+        <table id="clients-table" class="table table-bordered" style="width:96%;">
+            
+        <thead>
+            <tr>
+            <th>#ID</th>
+            <th>Plugin</th>
+            <th>Days Left</th>
+            <th>Banned</th>
+            <th>MD5</th>
+            <th>HWID</th>
+            <th>IPs Restriction</th>
+            <th>IPs</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+        </table>
+    </div>
+    </div>
+</body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script src="js/droppy.js"></script>
+
+<script src="bootstrap-editable/js/bootstrap-editable.js"></script>
